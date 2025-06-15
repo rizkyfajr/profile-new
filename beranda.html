@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Rizky Fajar Anugrah</title>
+    
+    <!-- Memuat Tailwind CSS untuk styling yang cepat dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Memuat Google Fonts (Inter) untuk tipografi yang bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Kustom untuk fallback dan elemen spesifik */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* bg-slate-900 */
+            color: #e2e8f0; /* text-slate-200 */
+        }
+        
+        /* Glassmorphism effect untuk card */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5); /* bg-slate-800 with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Kontainer utama dengan padding DAN margin atas (mt-16) -->
+    <div class="container mx-auto max-w-5xl px-6 py-12 mt-32">
+
+        <!-- Bagian Hero: Perkenalan dan Gambar Profil -->
+        <header class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 mb-24">
+            <!-- Kolom Teks -->
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+                    Hai, Saya <br><span class="text-teal-400">Rizky Fajar Anugrah</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-8">
+                    Seorang Web Developer yang bersemangat dalam menciptakan solusi digital yang inovatif dan menarik.
+                </p>
+                <a href="#kontak" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 inline-block transform hover:scale-105">
+                    Hubungi Saya
+                </a>
+            </div>
+            <!-- Kolom Gambar -->
+            <div class="md:w-1/2 w-full flex justify-center items-center">
+                <!-- PERUBAHAN: kelas 'rounded-full' diubah menjadi 'rounded-2xl' -->
+                <img src="image.png" 
+                     alt="Foto Profil Rizky Fajar Anugrah" 
+                     class="rounded-2xl w-64 h-auto md:w-80 object-cover border-4 border-teal-500 shadow-lg">
+            </div>
+        </header>
+
+        <!-- Bagian Tentang Saya -->
+        <section id="tentang" class="mb-24">
+            <h2 class="text-3xl font-bold text-white text-center mb-2">Tentang Saya</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <div class="text-slate-300 text-center max-w-3xl mx-auto text-lg leading-relaxed space-y-4">
+                <p>
+                    Hai, saya Rizky Fajar Anugrah, seorang Web Developer yang bersemangat dengan pengalaman langsung dalam membangun, menyesuaikan, dan memelihara aplikasi internal yang mendukung operasi bisnis. Saya berspesialisasi dalam mengembangkan sistem web yang ramah pengguna, efisien, dan dapat diskalakan menggunakan teknologi seperti PHP, Laravel, Vue.js, dan MySQL.
+                </p>
+                <p>
+                    Saya senang memecahkan masalah dunia nyata melalui kode dan terus berusaha untuk meningkatkan keterampilan teknis dan soft skill saya. Minat saya terutama terletak pada pengembangan backend, integrasi sistem, dan optimisasi kinerja.
+                </p>
+                <p>
+                     Saat ini, saya bekerja di Kimia Farma sebagai Web Developer, mengelola dan meningkatkan sistem internal terkait proses HR, gudang, dan manajemen dokumen. Mari terhubung! Saya terbuka untuk peluang baru, kolaborasi, dan diskusi teknologi!
+                </p>
+            </div>
+        </section>
+
+        <!-- === PERUBAHAN: Desain Ulang Bagian Pengalaman dengan Slideshow === -->
+        <section id="pengalaman" class="mb-24">
+            <h2 class="text-3xl font-bold text-white text-center mb-2">Pengalaman & Proyek</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mb-16"></div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Garis vertikal timeline -->
+                <div class="hidden md:block absolute w-0.5 h-full bg-slate-700 left-1/2 transform -translate-x-1/2"></div>
+                
+                <!-- Item Timeline 1: Kimia Farma -->
+                <div class="mb-8 flex justify-between md:items-center w-full">
+                    <div class="hidden md:block w-5/12"></div>
+                    <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">1</div>
+                    <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
+                        <p class="text-sm font-semibold text-teal-400">Feb 2022 - Saat ini</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Fullstuck Developer</h3>
+                        <p class="text-md font-medium text-slate-300 mb-3">PT. Kimia Farma Plant Banjaran</p>
+                        
+                        <!-- Slideshow Container -->
+                        <div class="slideshow-container relative" data-id="kf">
+                            <div class="slideshow-inner">
+                                <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=E-SDM+Project" alt="Proyek E-SDM" class="slide rounded-lg w-full h-auto object-cover" data-title="E-SDM: Sistem kehadiran dan lembur karyawan.">
+                                <img src="https://placehold.co/400x200/14b8a6/0f172a?text=Doc+Handling" alt="Document Handling System" class="slide rounded-lg w-full h-auto object-cover hidden" data-title="Document Handling System: Manajemen dokumen (Vue.js & Laravel).">
+                                <img src="https://placehold.co/400x200/0d9488/f0fdfa?text=E-KFPB+Suite" alt="E-KFPB Suite" class="slide rounded-lg w-full h-auto object-cover hidden" data-title="E-KFPB Suite: Aplikasi untuk operasi teknis & inventaris (PHP Native).">
+                            </div>
+                            <p class="slide-caption text-center text-sm text-slate-400 mt-2 h-10"></p>
+                            <!-- Tombol Navigasi -->
+                            <button class="slideshow-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">&lt;</button>
+                            <button class="slideshow-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">&gt;</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Item Timeline 2: Solusi Karya Digital -->
+                <div class="mb-8 flex justify-between md:flex-row-reverse md:items-center w-full">
+                    <div class="hidden md:block w-5/12"></div>
+                    <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">2</div>
+                    <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
+                        <p class="text-sm font-semibold text-teal-400">Mar 2021 - Jan 2022 (11 bln)</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Back End Developer</h3>
+                        <p class="text-md font-medium text-slate-300 mb-3">PT. Solusi Karya Digital</p>
+                        <div class="slideshow-container relative" data-id="skd">
+                             <div class="slideshow-inner">
+                                <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=Legowo+Insurance" alt="Proyek Legowo Insurance" class="slide rounded-lg w-full h-auto object-cover" data-title="Legowo Insurance: Aplikasi broker asuransi (Codeigniter 3 & PHP 7).">
+                            </div>
+                             <p class="slide-caption text-center text-sm text-slate-400 mt-2 h-10"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item Timeline 3: Bagja Indonesia -->
+                <div class="mb-8 flex justify-between md:items-center w-full">
+                    <div class="hidden md:block w-5/12"></div>
+                    <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">3</div>
+                    <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
+                        <p class="text-sm font-semibold text-teal-400">Agu 2020 - Agu 2021 (1 thn 1 bln)</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Back End Developer</h3>
+                        <p class="text-md font-medium text-slate-300 mb-3">Bagja Indonesia</p>
+                        <div class="slideshow-container relative" data-id="bi">
+                            <div class="slideshow-inner">
+                                <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=API+Kasir" alt="Proyek API Kasir" class="slide rounded-lg w-full h-auto object-cover" data-title="API Kasir: API untuk aplikasi kasir UMKM.">
+                                <img src="https://placehold.co/400x200/14b8a6/0f172a?text=Arisah+API" alt="Proyek API Arisah Hegarmanah" class="slide rounded-lg w-full h-auto object-cover hidden" data-title="API Arisah Hegarmanah: Pengembangan API menggunakan PHP Lumen.">
+                            </div>
+                            <p class="slide-caption text-center text-sm text-slate-400 mt-2 h-10"></p>
+                            <!-- Tombol Navigasi -->
+                            <button class="slideshow-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">&lt;</button>
+                            <button class="slideshow-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item Timeline 4: Inova Medika -->
+                <div class="mb-8 flex justify-between md:flex-row-reverse md:items-center w-full">
+                    <div class="hidden md:block w-5/12"></div>
+                    <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">4</div>
+                    <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
+                        <p class="text-sm font-semibold text-teal-400">Agu 2019 - Agu 2020 (1 thn 1 bln)</p>
+                        <h3 class="text-xl font-bold text-white mt-1">Web Programmer</h3>
+                        <p class="text-md font-medium text-slate-300 mb-3">PT. Inova Medika Solusindo</p>
+                        <div class="slideshow-container relative" data-id="ims">
+                             <div class="slideshow-inner">
+                                <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=SIMRS+Project" alt="Proyek SIMRS" class="slide rounded-lg w-full h-auto object-cover" data-title="Pengembangan SIMRS (Sistem Informasi Manajemen Rumah Sakit) menggunakan metode Scrum.">
+                            </div>
+                             <p class="slide-caption text-center text-sm text-slate-400 mt-2 h-10"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    
+        <!-- Bagian Tech Stack & Keahlian -->
+        <section id="keahlian" class="mb-24">
+            <h2 class="text-3xl font-bold text-white text-center mb-2">Tech Stack & Keahlian</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mb-12"></div>
+            
+            <!-- Kategori Frontend -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Frontend Development</h3>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <!-- HTML5 -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622-13.42-.002.61-7.003h21.82l-1.83 18.58-8.48 2.414-7.437-2.127z" fill="#E34F26"/></svg>
+                        <p class="mt-2 text-sm font-semibold">HTML5</p>
+                    </div>
+                     <!-- CSS3 -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CSS3</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622-13.42-.002.61-7.003h21.82l-1.83 18.58-8.48 2.414-7.437-2.127z" fill="#1572B6"/></svg>
+                        <p class="mt-2 text-sm font-semibold">CSS3</p>
+                    </div>
+                    <!-- JavaScript -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                         <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.253c-.337.662-1.235 1.222-2.122 1.54l-1.32.476c-1.395.533-2.63.85-3.678.85-.926 0-1.74-.21-2.43-.625-.68-.41-1.124-.963-1.32-1.652H11.16v-2.115h3.692v-3.083h-3.692V8.41h5.234v2.115h-2.95v1.444h2.95v3.083h-2.296c.084-.338.253-.61.504-.814.25-.2.585-.302.996-.302.65 0 1.22.172 1.71.516.48.344.72.84.72 1.488-.002.48-.164.876-.48 1.19-.318.312-.75.534-1.294.662l1.32-.476c.762-.275 1.42-.688 1.97-1.235.54-.54.81-1.21.81-2.008s-.27-1.468-.81-2.008c-.54-.54-1.21-.81-2.008-.81-.8 0-1.47.27-2.01.81-.54.54-.81 1.21-.81 2.008v.25h-2.95V8.41h5.234v2.115h-2.95v3.083h2.95v2.115H8.924v2.115h2.234c-.338-.662-1.236-1.22-2.123-1.54l-1.32-.477c-1.395-.532-2.63-.85-3.676-.85-.926 0-1.74-.21-2.43-.625-.68-.41-1.124-.963-1.32 1.652H0v-2.115h3.692v-3.083H0V8.41h5.234v2.115H2.285v1.444h2.95v3.083H2.938c.085-.338.254-.61.505-.814.25-.2.585-.302.996-.302.65 0 1.22.172 1.71.516.48.344.72.84.72 1.488 0 .48-.164.876-.48 1.19-.318.312-.75.534-1.294.662l1.32-.476c.762-.275 1.42-.688 1.97-1.235.54-.54.81-1.21.81-2.008s-.27-1.468-.81-2.008C7.03 9.48 6.36 9.21 5.56 9.21c-.8 0-1.47.27-2.01.81-.54.54-.81 1.21-.81 2.008v.25H0V8.41h5.234v2.115H2.285v3.083h2.95v2.115H0v2.115h8.924v-2.115H6.69c.338.662 1.235 1.22 2.122 1.54l1.32.476c1.395.533 2.63.85 3.678.85.925 0 1.74-.21 2.43-.625.68-.41 1.123-.963 1.32-1.652H24v-2.115h-1.966z" fill="#F7DF1E"/></svg>
+                        <p class="mt-2 text-sm font-semibold">JavaScript</p>
+                    </div>
+                    <!-- Bootstrap -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Bootstrap</title><path d="M13.122 0H3.937C2.901 0 2.06.84 2.06 1.878v13.56c0 1.037.84 1.877 1.877 1.877h9.185c1.038 0 1.877-.84 1.877-1.877V1.878C14.999.84 14.16 0 13.122 0zM8.53 13.425H5.44V8.01h3.09c1.624 0 2.422.952 2.422 2.71 0 1.757-.798 2.705-2.422 2.705zm0-2.015H6.87v1.23h1.66c.82 0 1.13-.39 1.13-.99 0-.6-.31-.99-1.13-.99zm6.273-3.535h-3.9v10.15h-1.43V5.875H5.44V4.6h9.363v1.275zM22.06 6.063v11.875c0 1.037-.84 1.877-1.877 1.877H17.8v-13.56c0-1.038.84-1.878 1.878-1.878h.505c1.037 0 1.877.84 1.877 1.877z" fill="#7952B3"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Bootstrap</p>
+                    </div>
+                    <!-- Tailwind CSS -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Tailwind CSS</title><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,14.485,12,16.2,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C14.537,6.182,13.718,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,1.996,2.576,3.712,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C8.537,13.382,7.718,12,6.001,12z" fill="#06B6D4"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Tailwind CSS</p>
+                    </div>
+                    <!-- Vue.js -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Vue.js</title><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39Z" fill="#4FC08D"/><path d="M12,14.08,5.16,1.61h4.7L12,5.16l2.14-3.55h4.7Z" fill="#41B883"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Vue.js</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kategori Backend -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Backend Development</h3>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <!-- Laravel -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Laravel</title><path d="M22.313 7.425L12.53 1.631a.952.952 0 00-.936 0L1.815 7.425a.952.952 0 00-.472.823v9.42c0 .363.208.7.533.87L11.75 24v-9.42l-5.63-3.249v-4.04L11.75 11.2l5.62-3.25v4.039l-5.62 3.25V24l9.873-5.702c.325-.17.533-.498.533-.87v-9.42a.952.952 0 00-.473-.823zM11.75 9.42L6.12 6.171l5.63-3.25 5.63 3.25L11.75 9.42z" fill="#FF2D20"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Laravel</p>
+                    </div>
+                    <!-- CodeIgniter -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CodeIgniter</title><path d="M12.25 0C5.625 0 0 4.125 0 11.063c0 5.437 3.563 8.312 8.063 10.312.375.188.812.188 1.125 0 4.5-2 8.063-4.875 8.063-10.312C17.25 7.875 14.813 0 12.25 0zm-.5 4.063c.438 0 .813.438.813.875v5.375c.875-.625 1.563-1.813 1.563-3.063 0-2.125-1.563-3.75-3.625-3.75-2.25 0-3.688 1.625-3.688 3.75 0 1.25.688 2.438 1.563 3.063V4.938c0-.438.375-.875.875-.875z" fill="#EF4223"/></svg>
+                        <p class="mt-2 text-sm font-semibold">CodeIgniter</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kategori Databases & Tools -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Databases & Tools</h3>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <!-- MySQL -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>MySQL</title><path d="M12 7.094c-1.884 0-3.375 1.055-3.375 2.812h1.5c0-.984.75-1.687 1.875-1.687s1.875.703 1.875 1.688c0 .773-.469 1.289-1.406 1.805l-.563.304c-1.359.727-2.25 1.688-2.25 3.211V15h1.5v-.938c0-1.078.516-1.64 1.64-2.273l.563-.305c1.22-.656 1.922-1.64 1.922-3.047C15.375 8.148 13.884 7.094 12 7.094zM21 12v-1.5c0-.28-.22-.5-.5-.5h-2c-.28 0-.5.22-.5.5V12h-1.5v8.25c0 .414.336.75.75.75H21c.414 0 .75-.336.75-.75V15h-3.75v1.5h2.25v2.25h-2.25v1.5H21a.75.75 0 00.75-.75V12zM3 12v-1.5c0-.28-.22-.5-.5-.5H0v9h2.5c.28 0 .5-.22.5-.5V12zm-1.5 6.75H.75v-1.5h.75v1.5zm0-3h-.75v-1.5h.75v1.5zm0-3h-.75V12h.75v1.5zM9 12v-1.5c0-.28-.22-.5-.5-.5h-2c-.28 0-.5.22-.5.5V12H4.5v8.25c0 .414.336.75.75.75H9c.414 0 .75-.336.75-.75V15H6v1.5h2.25v2.25H6v1.5H9c.414 0 .75-.336.75-.75V12z" fill="#4479A1"/></svg>
+                        <p class="mt-2 text-sm font-semibold">MySQL</p>
+                    </div>
+                    <!-- GitHub -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#181717"/></svg>
+                        <p class="mt-2 text-sm font-semibold">GitHub</p>
+                    </div>
+                    <!-- Postman -->
+                     <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Postman</title><path d="M21.054 9.246c0 1.23-.48 2.373-1.303 3.21a4.48 4.48 0 0 1-3.21 1.303H9.246a4.529 4.529 0 0 1-3.21-1.304A4.523 4.523 0 0 1 4.73 9.246a4.48 4.48 0 0 1 1.304-3.21c.822-.823 1.98-1.303 3.21-1.303h7.295c1.23 0 2.387.48 3.21 1.303.822.823 1.303 1.98 1.303 3.21zm-1.81 0a2.71 2.71 0 0 0-2.71-2.71H9.246a2.71 2.71 0 0 0-2.71 2.71 2.71 2.71 0 0 0 2.71 2.71h7.295a2.71 2.71 0 0 0 2.71-2.71zM16.51 18.09c0 .762-.303 1.458-.795 1.95-.492.492-1.187.795-1.95.795h-2.14v-5.41h2.14c.762 0 1.458.303 1.95.795.492.492.795 1.187.795 1.95zm-1.81 0a.93.93 0 0 0-.93-.93h-1.21v1.85h1.21c.516 0 .93-.414.93-.92z" fill="#FF6C37"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Postman</p>
+                    </div>
+                    <!-- Ubuntu -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Ubuntu</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.001 2.134c1.953 0 3.754.764 5.14 2.15l-1.28 1.28a5.25 5.25 0 0 0-7.72 0l-1.28-1.28A7.197 7.197 0 0 1 11.999 2.134zm7.904 4.02a7.22 7.22 0 0 1 2.146 5.146c0 1.953-.764 3.754-2.15 5.14l-1.28-1.28a5.25 5.25 0 0 0 0-7.72l1.28-1.28A7.22 7.22 0 0 1 19.903 6.154zM4.097 6.154a7.22 7.22 0 0 1 2.146-2.146l1.28 1.28a5.25 5.25 0 0 0 0 7.72l-1.28 1.28A7.22 7.22 0 0 1 4.097 11.3a7.197 7.197 0 0 1 0-5.146zm7.902 15.712a7.197 7.197 0 0 1-5.14-2.15l1.28-1.28a5.25 5.25 0 0 0 7.72 0l1.28 1.28a7.197 7.197 0 0 1-5.14 2.15z" fill="#E95420"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Ubuntu</p>
+                    </div>
+                    <!-- DigitalOcean -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>DigitalOcean</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12c2.42 0 4.68-.718 6.595-1.95v-6.335A6.574 6.574 0 0 0 12 13.09c-3.626 0-6.57-2.943-6.57-6.57S8.374 0 12 0zm0 1.965c-2.54 0-4.605 2.065-4.605 4.605S9.46 11.175 12 11.175s4.605-2.065 4.605-4.605S14.54 1.965 12 1.965zm8.56 1.965H18.6v2.96h-2.96v1.97h2.96v2.96h1.96v-2.96h2.965v-1.97H20.56V3.93z" fill="#0080FF"/></svg>
+                        <p class="mt-2 text-sm font-semibold">DigitalOcean</p>
+                    </div>
+                    <!-- Google Cloud -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Cloud</title><path d="M16.14.73a11.959 11.959 0 00-8.28 0 12.01 12.01 0 00-6.22 8.35v6.19a11.959 11.959 0 000 8.28 12.01 12.01 0 008.35 6.22h6.19a11.959 11.959 0 008.28 0 12.01 12.01 0 006.22-8.35v-6.19a11.959 11.959 0 000-8.28 12.01 12.01 0 00-8.35-6.22h-6.19zm-.25 1.55c.96.2 1.83.54 2.65.98a12.031 12.031 0 006.86 6.86c.44.82.78 1.69.98 2.65v.25c.24.96.39 1.97.39 3s-.15 2.04-.39 3c-.2.96-.54 1.83-.98 2.65a12.031 12.031 0 00-6.86 6.86c-.82.44-1.69.78-2.65.98h-.25c-.96.24-1.97.39-3 .39s-2.04-.15-3-.39c-.96-.2-1.83-.54-2.65-.98a12.031 12.031 0 00-6.86-6.86c-.44-.82-.78-1.69-.98-2.65v-.25c-.24-.96-.39-1.97-.39-3s.15-2.04.39-3c.2-.96.54-1.83.98-2.65a12.031 12.031 0 006.86-6.86c.82-.44 1.69-.78 2.65-.98h.25c.96-.24 1.97-.39 3-.39s2.04.15 3 .39zM12 10.3c.9 0 1.69-.38 2.25-.97.55-.58.89-1.34.89-2.25 0-.9-.34-1.67-.89-2.25C13.69 4.25 12.9 3.86 12 3.86s-1.69.39-2.25.97c-.55.58-.89 1.34-.89 2.25 0 .9.34 1.67.89 2.25.56.59 1.34.97 2.25.97zm0 3.38c-2.3 0-4.17-1.87-4.17-4.17h1.4c0 1.55 1.25 2.78 2.77 2.78s2.77-1.23 2.77-2.78h1.4c0 2.3-1.87 4.17-4.17 4.17zm0 2.1c-3.1 0-5.6-2.5-5.6-5.6h1.43c0 2.28 1.89 4.17 4.17 4.17s4.17-1.89 4.17-4.17h1.43c0 3.1-2.5 5.6-5.6 5.6z" fill="#4285F4"/></svg>
+                        <p class="mt-2 text-sm font-semibold">Google Cloud</p>
+                    </div>
+                    <!-- aaPanel -->
+                    <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
+                        <svg class="h-12 w-12" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#20A3FF"><title>aaPanel</title><circle cx="12" cy="12" r="11.5" stroke="#20A3FF" stroke-width="1" fill="none"/><text x="12" y="16" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#20A3FF">aA</text></svg>
+                        <p class="mt-2 text-sm font-semibold">aaPanel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Bagian Kontak -->
+        <section id="kontak" class="text-center">
+             <h2 class="text-3xl font-bold text-white mb-2">Mari Terhubung & Berkolaborasi</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <p class="text-slate-300 text-lg mb-8">Saya selalu terbuka untuk diskusi, ide baru, atau peluang menarik. Mari kita wujudkan sesuatu yang hebat bersama!</p>
+            
+            <!-- Kontainer untuk tombol -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
+                <!-- Tombol Email -->
+                <a href="mailto:rizkyfajaranugrah2@gmail.com" class="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 transform hover:scale-105 w-full sm:w-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Email
+                </a>
+                <!-- Tombol LinkedIn -->
+                <a href="https://www.linkedin.com/in/rizky-fajar-anugrah-aa826718a/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 transform hover:scale-105 w-full sm:w-auto">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/rizkyfajr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 transform hover:scale-105 w-full sm:w-auto">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#181717"/></svg>
+                        
+                    GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 border-t border-slate-800 mt-12">
+        <p class="text-slate-500">&copy; <span id="year"></span> <b>Rizky Fajar Anugrah</b></p>
+    </footer>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Skrip sederhana untuk mengatur tahun di footer secara dinamis
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Skrip untuk fungsionalitas slideshow
+            const slideshows = document.querySelectorAll('.slideshow-container');
+
+            slideshows.forEach(slideshow => {
+                const slides = slideshow.querySelectorAll('.slide');
+                const prevButton = slideshow.querySelector('.slideshow-prev');
+                const nextButton = slideshow.querySelector('.slideshow-next');
+                const caption = slideshow.querySelector('.slide-caption');
+                let currentIndex = 0;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('hidden', i !== index);
+                    });
+                    if (caption) {
+                        caption.textContent = slides[index].dataset.title || '';
+                    }
+                }
+
+                if (prevButton && nextButton) {
+                    prevButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                        showSlide(currentIndex);
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                        showSlide(currentIndex);
+                    });
+                }
+                
+                // Tampilkan slide pertama saat halaman dimuat
+                showSlide(currentIndex);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -30,7 +30,11 @@
     
     <!-- Memuat Tailwind CSS untuk styling yang cepat dan responsif -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
     <!-- Memuat Google Fonts (Inter) untuk tipografi yang bersih -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,14 +50,55 @@
         
         /* Glassmorphism effect untuk card */
         .glass-card {
-            background: rgba(30, 41, 59, 0.5); /* bg-slate-800 with opacity */
+            background: rgba(226, 232, 240, 0.5); /* Warna default untuk light mode */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.5); /* Warna untuk dark mode */
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+         /* === PERUBAHAN: CSS untuk Animasi Transisi Tema === */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+            mix-blend-mode: normal;
+        }
+
+        /* Tema baru selalu di atas, tema lama di bawah */
+        ::view-transition-old(root) {
+            z-index: 1;
+        }
+        ::view-transition-new(root) {
+            z-index: 9999;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            color: #14b8a6; /* teal-500 */
+            animation: blink-caret 1s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-500">
+
+    <!-- Tombol Pengubah Tema -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 transition-transform transform hover:scale-110">
+        <svg id="theme-toggle-dark-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <svg id="theme-toggle-light-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+    </button>
 
     <!-- Kontainer utama dengan padding DAN margin atas (mt-16) -->
     <div class="container mx-auto max-w-5xl px-6 py-12 mt-32">
@@ -62,9 +107,11 @@
         <header class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 mb-24">
             <!-- Kolom Teks -->
             <div class="md:w-1/2 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
-                    Hai, Saya <br><span class="text-teal-400">Rizky Fajar Anugrah</span>
-                </h1>
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight mb-4">
+                    Hai, Saya <br>
+                    <!-- === PERUBAHAN: Elemen untuk animasi mengetik === -->
+                    <span class="text-teal-500" id="animated-name"></span><span class="typing-cursor text-teal-500">|</span>
+               </h1>
                 <p class="text-lg md:text-xl text-slate-400 mb-8">
                     Seorang Web Developer yang bersemangat dalam menciptakan solusi digital yang inovatif dan menarik.
                 </p>
@@ -83,9 +130,9 @@
 
         <!-- Bagian Tentang Saya -->
         <section id="tentang" class="mb-24">
-            <h2 class="text-3xl font-bold text-white text-center mb-2">Tentang Saya</h2>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-2">Tentang Saya</h2>
             <div class="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
-            <div class="text-slate-300 text-center max-w-3xl mx-auto text-lg leading-relaxed space-y-4">
+            <div class="text-slate-600 dark:text-slate-300 text-center max-w-3xl mx-auto text-lg leading-relaxed space-y-4">
                 <p>
                     Hai, saya Rizky Fajar Anugrah, seorang Web Developer yang bersemangat dengan pengalaman langsung dalam membangun, menyesuaikan, dan memelihara aplikasi internal yang mendukung operasi bisnis. Saya berspesialisasi dalam mengembangkan sistem web yang ramah pengguna, efisien, dan dapat diskalakan menggunakan teknologi seperti PHP, Laravel, Vue.js, dan MySQL.
                 </p>
@@ -100,21 +147,21 @@
 
         <!-- === PERUBAHAN: Desain Ulang Bagian Pengalaman dengan Slideshow === -->
         <section id="pengalaman" class="mb-24">
-            <h2 class="text-3xl font-bold text-white text-center mb-2">Pengalaman & Proyek</h2>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-2">Pengalaman & Proyek</h2>
             <div class="w-24 h-1 bg-teal-500 mx-auto mb-16"></div>
 
             <div class="relative max-w-4xl mx-auto">
                 <!-- Garis vertikal timeline -->
-                <div class="hidden md:block absolute w-0.5 h-full bg-slate-700 left-1/2 transform -translate-x-1/2"></div>
+                <div class="hidden md:block absolute w-0.5 h-full bg-slate-300 dark:bg-slate-700 left-1/2 transform -translate-x-1/2"></div>
                 
                 <!-- Item Timeline 1: Kimia Farma -->
                 <div class="mb-8 flex justify-between md:items-center w-full">
                     <div class="hidden md:block w-5/12"></div>
                     <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">1</div>
                     <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
-                        <p class="text-sm font-semibold text-teal-400">Feb 2022 - Saat ini</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Fullstuck Developer</h3>
-                        <p class="text-md font-medium text-slate-300 mb-3">PT. Kimia Farma Plant Banjaran</p>
+                        <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Feb 2022 - Saat ini</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Fullstuck Developer</h3>
+                        <p class="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">PT. Kimia Farma Plant Banjaran</p>
                         
                         <!-- Slideshow Container -->
                         <div class="slideshow-container relative" data-id="kf">
@@ -137,9 +184,9 @@
                     <div class="hidden md:block w-5/12"></div>
                     <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">2</div>
                     <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
-                        <p class="text-sm font-semibold text-teal-400">Mar 2021 - Jan 2022 (11 bln)</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Back End Developer</h3>
-                        <p class="text-md font-medium text-slate-300 mb-3">PT. Solusi Karya Digital</p>
+                        <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Mar 2021 - Jan 2022 (11 bln)</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Back End Developer</h3>
+                        <p class="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">PT. Solusi Karya Digital</p>
                         <div class="slideshow-container relative" data-id="skd">
                              <div class="slideshow-inner">
                                 <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=Legowo+Insurance" alt="Proyek Legowo Insurance" class="slide rounded-lg w-full h-auto object-cover" data-title="Legowo Insurance: Aplikasi broker asuransi (Codeigniter 3 & PHP 7).">
@@ -154,9 +201,9 @@
                     <div class="hidden md:block w-5/12"></div>
                     <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">3</div>
                     <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
-                        <p class="text-sm font-semibold text-teal-400">Agu 2020 - Agu 2021 (1 thn 1 bln)</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Back End Developer</h3>
-                        <p class="text-md font-medium text-slate-300 mb-3">Bagja Indonesia</p>
+                        <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Agu 2020 - Agu 2021 (1 thn 1 bln)</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Back End Developer</h3>
+                        <p class="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">Bagja Indonesia</p>
                         <div class="slideshow-container relative" data-id="bi">
                             <div class="slideshow-inner">
                                 <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=API+Kasir" alt="Proyek API Kasir" class="slide rounded-lg w-full h-auto object-cover" data-title="API Kasir: API untuk aplikasi kasir UMKM.">
@@ -175,9 +222,9 @@
                     <div class="hidden md:block w-5/12"></div>
                     <div class="z-10 bg-teal-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold">4</div>
                     <div class="glass-card p-6 rounded-lg shadow-xl w-full md:w-5/12 ml-4 md:ml-0">
-                        <p class="text-sm font-semibold text-teal-400">Agu 2019 - Agu 2020 (1 thn 1 bln)</p>
-                        <h3 class="text-xl font-bold text-white mt-1">Web Programmer</h3>
-                        <p class="text-md font-medium text-slate-300 mb-3">PT. Inova Medika Solusindo</p>
+                        <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Agu 2019 - Agu 2020 (1 thn 1 bln)</p>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Web Programmer</h3>
+                        <p class="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">PT. Inova Medika Solusindo</p>
                         <div class="slideshow-container relative" data-id="ims">
                              <div class="slideshow-inner">
                                 <img src="https://placehold.co/400x200/0f172a/e2e8f0?text=SIMRS+Project" alt="Proyek SIMRS" class="slide rounded-lg w-full h-auto object-cover" data-title="Pengembangan SIMRS (Sistem Informasi Manajemen Rumah Sakit) menggunakan metode Scrum.">
@@ -192,12 +239,12 @@
     
         <!-- Bagian Tech Stack & Keahlian -->
         <section id="keahlian" class="mb-24">
-            <h2 class="text-3xl font-bold text-white text-center mb-2">Tech Stack & Keahlian</h2>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-2">Tech Stack & Keahlian</h2>
             <div class="w-24 h-1 bg-teal-500 mx-auto mb-12"></div>
             
             <!-- Kategori Frontend -->
             <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white text-center mb-6">Frontend Development</h3>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white text-center mb-6">Frontend Development</h3>
                 <div class="flex flex-wrap justify-center items-center gap-4">
                     <!-- HTML5 -->
                     <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
@@ -234,7 +281,7 @@
 
             <!-- Kategori Backend -->
             <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white text-center mb-6">Backend Development</h3>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white text-center mb-6">Backend Development</h3>
                 <div class="flex flex-wrap justify-center items-center gap-4">
                     <!-- Laravel -->
                     <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
@@ -251,7 +298,7 @@
 
             <!-- Kategori Databases & Tools -->
             <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white text-center mb-6">Databases & Tools</h3>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white text-center mb-6">Databases & Tools</h3>
                 <div class="flex flex-wrap justify-center items-center gap-4">
                     <!-- MySQL -->
                     <div class="bg-slate-50 text-slate-900 rounded-lg p-4 flex flex-col items-center w-28 h-28 justify-center transition-transform transform hover:scale-110 shadow-md">
@@ -294,9 +341,9 @@
 
        <!-- Bagian Kontak -->
         <section id="kontak" class="text-center">
-             <h2 class="text-3xl font-bold text-white mb-2">Mari Terhubung & Berkolaborasi</h2>
+             <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Mari Terhubung & Berkolaborasi</h2>
             <div class="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
-            <p class="text-slate-300 text-lg mb-8">Saya selalu terbuka untuk diskusi, ide baru, atau peluang menarik. Mari kita wujudkan sesuatu yang hebat bersama!</p>
+            <p class="text-slate-600 dark:text-slate-300 text-lg mb-8">Saya selalu terbuka untuk diskusi, ide baru, atau peluang menarik. Mari kita wujudkan sesuatu yang hebat bersama!</p>
             
             <!-- Kontainer untuk tombol -->
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
@@ -334,6 +381,86 @@
             // Skrip sederhana untuk mengatur tahun di footer secara dinamis
             document.getElementById('year').textContent = new Date().getFullYear();
 
+               // === Fungsionalitas Pengubah Tema dengan Animasi Lingkaran ===
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+            const updateIcons = (isDark) => {
+                darkIcon.classList.toggle('hidden', !isDark);
+                lightIcon.classList.toggle('hidden', isDark);
+            };
+            
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let isDarkMode = localStorage.getItem('color-theme') === 'dark' || (localStorage.getItem('color-theme') === null && prefersDark);
+            
+            document.documentElement.classList.toggle('dark', isDarkMode);
+            updateIcons(isDarkMode);
+
+            themeToggleBtn.addEventListener('click', (event) => {
+                if (!document.startViewTransition) {
+                    isDarkMode = !isDarkMode;
+                    document.documentElement.classList.toggle('dark', isDarkMode);
+                    localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
+                    updateIcons(isDarkMode);
+                    return;
+                }
+
+                const x = event.clientX;
+                const y = event.clientY;
+                const endRadius = Math.hypot(
+                    Math.max(x, window.innerWidth - x),
+                    Math.max(y, window.innerHeight - y)
+                );
+
+                const transition = document.startViewTransition(() => {
+                    isDarkMode = !isDarkMode;
+                    document.documentElement.classList.toggle('dark', isDarkMode);
+                    localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
+                    updateIcons(isDarkMode);
+                });
+
+                transition.ready.then(() => {
+                    const clipPath = [
+                        `circle(0px at ${x}px ${y}px)`,
+                        `circle(${endRadius}px at ${x}px ${y}px)`
+                    ];
+                    
+                    document.documentElement.animate(
+                        {
+                            // === PERUBAHAN: Kondisi `reverse()` dihapus agar animasi selalu membesar ===
+                            clipPath: clipPath
+                        },
+                        {
+                            duration: 600,
+                            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                            pseudoElement: '::view-transition-new(root)'
+                        }
+                    );
+                });
+            });
+
+            // === PERUBAHAN: Fungsionalitas Animasi Mengetik ===
+            const nameElement = document.getElementById('animated-name');
+            const cursorElement = document.querySelector('.typing-cursor');
+            const nameText = "Rizky Fajar Anugrah";
+            let i = 0;
+
+            function typeWriter() {
+                if (i < nameText.length) {
+                    nameElement.textContent += nameText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 110); // Kecepatan mengetik
+                } else {
+                    // Sembunyikan kursor setelah selesai mengetik
+                    cursorElement.style.display = 'true';
+                }
+            }
+
+            // Mulai animasi setelah jeda singkat
+            setTimeout(typeWriter, 500);
+
+            
             // Skrip untuk fungsionalitas slideshow
             const slideshows = document.querySelectorAll('.slideshow-container');
 
